@@ -38,8 +38,8 @@ module tb_counter ();
 
     counter DUT
         (
-            .clk,  
-            .rst_n, 
+            .clk,
+            .rst_n,
             .cntr 
         );
 
