@@ -1,0 +1,3 @@
+The command I ran from this directory is
+verilator --lint-only --timing -Wall -sv ../../rtl/rb_if.sv ../../rtl/ring_buffer.sv ../../tb/rb_tb.sv
+

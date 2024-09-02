@@ -18,7 +18,7 @@ interface rb_if # (
         output data,
         output valid,
         input ready
-    )
+    );
 
 
 endinterface : rb_if

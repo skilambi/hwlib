@@ -4,7 +4,6 @@
 */
 module ring_buffer #( 
     parameter type  data_t  = logic, 
-    parameter       DW      = $size(data_t),
     parameter       DEPTH   = 16,
     parameter       AW      = $clog2(DEPTH) 
 ) (
@@ -26,8 +25,8 @@ module ring_buffer #(
     typedef logic[ AW-1 : 0 ] addr_t;
     typedef logic[ AW : 0 ] cntr_t; 
 
-    addr_t wr_ptr, wr_ptr_nxt;  // Write address - points to where the next value will be written.
-    addr_t rd_ptr, rd_ptr_nxt;  // Read address - points to where next value will be read from.
+    addr_t wr_ptr;  // Write address - points to where the next value will be written.
+    addr_t rd_ptr;  // Read address - points to where next value will be read from.
     cntr_t cnt, cnt_nxt;        // Number of elements in the ring buffer
 
     logic wr    ;   //Write valid
