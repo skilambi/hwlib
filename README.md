@@ -1,2 +1,4 @@
-# rtlblocks
-Simple RTL blocks for learning and use in opensource. This is my playground where I can test different blocks that I can use later. 
+# hwlib - Hardware Library
+
+Hardware Library i.e. hwlib contains multiple RTL modules that can be part of a system. Each RTL block will have its associated documentation in the form of an MD file.
+HWLIB should be instantatiated as a subrepo in a *project* so that these blocks are available for building systems.
