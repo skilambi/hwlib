@@ -1,0 +1,7 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1694722793" />
+    <testcase name="hello_word" classname="dut_test" file="/Users/skilambi/Documents/Work/MyDesign/rtlblocks/counter/verif/coco/dut_test.py" lineno="11" time="0.00017213821411132812" sim_time_ns="0.001" ratio_time="5.8092853185595565" />
+    <testcase name="check_counter" classname="dut_test" file="/Users/skilambi/Documents/Work/MyDesign/rtlblocks/counter/verif/coco/dut_test.py" lineno="33" time="0.002651214599609375" sim_time_ns="100.00099999999999" ratio_time="37718.93833669064" />
+  </testsuite>
+</testsuites>

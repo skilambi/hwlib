@@ -1,0 +1,37 @@
+%% Author: Sai Mohan Kilambi
+%% Date Created: Jul 12 2023
+%% Purpose
+%  This sandbox is where I played around with fixed point two's complement
+%  concepts. I basically wanted to recreate portions of the fixed point
+%  tool box. This will act as a launch pad for implementing these in C++. 
+
+
+clear;
+clc;
+
+WL = 16;
+FL = 8;
+num = -3.454343;
+fxp_rounding = 'truncate';
+
+% First figure out how many integer widths are present
+IL = WL - FL;
+
+% Is the integer length enough to hold integer part of the number?
+if(num < 0)
+    num_int = ceil(num);
+else
+    num_int = floor(num);
+end
+
+num_int = abs(num_int);
+
+num_int_bits = ceil(log2(num_int)) + 1; % + 1 to account for signedness
+
+%% Conversion to fixed point
+num_fxp = num * 2^FL;
+
+if ( strcmp(fxp_rounding, 'convergent') )
+elseif ( strcmp(fxp_rounding, 'truncate') )
+    num_
+end
