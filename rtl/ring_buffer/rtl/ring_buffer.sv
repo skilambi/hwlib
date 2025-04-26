@@ -1,5 +1,10 @@
 
 /*
+A ringbuffer is a data structure that does not have a concept of top and bottom. It basically stores an incoming payload
+if it has space and on the output if there is valid data, then a consumer can assert ready and consume it. There is no
+address to where you can write. 
+
+Other terms for a ring_buffer are Sync-FIFO, Queue. 
 
 */
 module ring_buffer #( 
@@ -95,5 +100,6 @@ module ring_buffer #(
 
     assign o_bus.valid  =   !empty;
     assign o_bus.data   =   rng_buf[rd_ptr];
+    assign i_bus.ready  =   !full;
 
 endmodule : ring_buffer
