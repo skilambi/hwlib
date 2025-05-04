@@ -8,7 +8,7 @@ take all the dependencies into consideration.
 import os
 import logging
 import importlib.util
-from utils import singleton
+from hwutils.decorators import singleton
 # Set up logging
 
 # Configure logging
@@ -35,6 +35,8 @@ class HwLibRepo:
        
        # Yaml Files
        self.yaml_files = []
+       
+       self.collect_files()
        
        
     def collect_files(self):
@@ -95,7 +97,8 @@ class HwLibRepo:
                 else:
                     logger.warning(f"Unknown source type {source_type} for file {loc}")
 
-hewlib_repo = HwLibRepo()
+hwrepo = HwLibRepo()
+
 
 """ - Left this here for debugging purposes
 if __name__ == "__main__":

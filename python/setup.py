@@ -18,7 +18,8 @@ def find_version():
 setup(
     name="hwlib",
     version=find_version(),
-    packages=find_packages(),
+    packages=find_packages(where="."),
+    package_dir={"": "."},
     package_data={},
     license="",
     author="Sai Mohan Kilambi",
