@@ -8,6 +8,8 @@ take all the dependencies into consideration.
 import os
 import logging
 import importlib.util
+from utils import singleton
+# Set up logging
 
 # Configure logging
 logging.basicConfig(
@@ -17,7 +19,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
+@singleton
 class HwLibRepo:
     # Class Attributes
     
@@ -93,8 +95,12 @@ class HwLibRepo:
                 else:
                     logger.warning(f"Unknown source type {source_type} for file {loc}")
 
+hewlib_repo = HwLibRepo()
+
+""" - Left this here for debugging purposes
 if __name__ == "__main__":
     hwlib_repo = HwLibRepo()
     hwlib_repo.collect_files()
     # The next step would be to process the lib_def.py files and collect the files
     # For now, we are just printing the directories and files found. 
+"""
