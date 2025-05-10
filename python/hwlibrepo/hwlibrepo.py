@@ -13,7 +13,7 @@ from hwutils.decorators import singleton
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+    level=logging.WARNING,  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
     format="%(asctime)s - %(levelname)s - %(message)s",  # Log message format
     datefmt="%Y-%m-%d %H:%M:%S"  # Date format
 )
