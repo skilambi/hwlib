@@ -5,6 +5,52 @@
 
 module ring_buffer_tb;
 
+    logic clk;
+    logic rst_n;
+    initial begin 
+        clk = 0;
+        forever
+            #5 clk = ~clk;
+    end 
+
+    initial begin 
+        rst_n = 1;
+        repeat(5)
+            @(posedge clk);
+        
+        rst_n = 0;
+        repeat(5)
+            @(posedge clk);
+        
+        rst_n = 1;
+    end 
+
+    /***********************
+     * DUT INSTATIATION
+     ***********************/
+    typedef logic [31:0] data_t;
+
+    rb_if i_bus();
+    rb_if o_bus();
+
+    assign o_bus.ready = 1'b1;
+
+    ring_buffer #( 
+        .data_t(data_t), 
+        .DEPTH(16),
+        .AW(4)
+    ) dut (
+        .clk,
+        .rst_n,
+
+        .full(),
+        .empty(),
+    
+        .i_bus,
+        .o_bus
+    );
+
+
     `TEST_SUITE begin 
 
         `TEST_SUITE_SETUP begin 
@@ -17,21 +63,12 @@ module ring_buffer_tb;
             $display("Test suite cleanup for ring_buffer_tb");
         end
 
-        `TEST_CASE("test1") begin
-         $display("This test case is expected to pass");
-         `CHECK_EQUAL(1, 1);
-        end
-
-        `TEST_CASE("test2") begin
-            $display("This test case is expected to fail");
-            `CHECK_EQUAL(0, 1, "You may also optionally add a diagnostic message to CHECK_EQUAL");
-            // Note: A test case will also be marked as failing if the
-            // simulator stops for other reasons before the end of the
-            // TEST_SUITE block is reached. This means that you don't
-            // need to use CHECK_EQUAL if the testbench you want to
-            // convert to VUnit already contains code that for example
-            // calls $stop if an error-condition is detected.
-        end
+        `TEST_CASE("basic") begin 
+            $display("Starting Test 3");
+            repeat(100)
+                @(posedge clk);
+            $display("Finishing Test 3");
+        end 
 
     end // End of test suite
 

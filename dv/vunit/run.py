@@ -32,8 +32,10 @@ if args.simulator == "questa":
         print("Please add the QuestaSim bin directory to your system PATH.")
         sys.exit(1)
 
+
 # Create Vunit Instance
 vu = VUnit.from_argv(argv=remaining_argv)
+
 
 # Print which simulator is being used
 print(f"Using simulator: {vu._simulator_class.__name__}")
@@ -44,14 +46,18 @@ vu.add_verilog_builtins()
 # Add all the files from the hwlibrepo singleton object
 lib = vu.add_library("lib")
 for file in hwrepo.sv_rtl_files:
-    lib.add_source_file(file)
+    tb = lib.add_source_file(file)
 for file in hwrepo.vhdl_rtl_files:
-    lib.add_source_file(file)
+    tb = lib.add_source_file(file)
 for file in hwrepo.sv_tb_files:
-    lib.add_source_file(file)
+    tb = lib.add_source_file(file)
 for file in hwrepo.vhdl_tb_files:
-    lib.add_source_file(file)
-    
- 
+    tb = lib.add_source_file(file)
+
+# Here is where we add the needed options for compiling, elaborating etc
+vu.add_compile_option("modelsim.vcom_flags", ["+acc"])
+vu.add_compile_option("modelsim.vlog_flags", ["+acc"])
+vu.set_sim_option("modelsim.vsim_flags.gui", ["-do", "../../wave.do"])
+
 # Run the vunit function
 vu.main()

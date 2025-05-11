@@ -100,6 +100,5 @@ module ring_buffer #(
 
     assign o_bus.valid  =   !empty;
     assign o_bus.data   =   rng_buf[rd_ptr];
-    assign i_bus.ready  =   !full;
 
 endmodule : ring_buffer
