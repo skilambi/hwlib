@@ -55,9 +55,10 @@ for file in hwrepo.vhdl_tb_files:
     tb = lib.add_source_file(file)
 
 # Here is where we add the needed options for compiling, elaborating etc
+# A description of these are given at https://vunit.github.io/py/opts.html
 vu.add_compile_option("modelsim.vcom_flags", ["+acc"])
 vu.add_compile_option("modelsim.vlog_flags", ["+acc"])
-vu.set_sim_option("modelsim.vsim_flags.gui", ["-do", "../../wave.do"])
+vu.set_sim_option("modelsim.vsim_flags.gui", ["-do", "../../wave.do"]) # This do file is executed after the design is loaded.
 
 # Run the vunit function
 vu.main()
